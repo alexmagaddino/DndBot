@@ -1,6 +1,9 @@
 package it.alexm.dndbot
 
 import com.google.gson.Gson
+import com.jessecorbett.diskord.dsl.bot
+import com.jessecorbett.diskord.dsl.command
+import com.jessecorbett.diskord.dsl.commands
 import it.alexm.dndbot.logic.rollCharacteristic
 import it.alexm.dndbot.logic.rollSkill
 import it.alexm.dndbot.vo.Character
@@ -10,11 +13,28 @@ import java.io.File
 import java.nio.charset.Charset
 
 
-fun main() {
+suspend fun main() {
+    val keyFile = File("/Users/alex/.dndbot/key.txt")
+
+    val botKey = keyFile.readText(Charset.defaultCharset())
+
+    bot(botKey) {
+        commands {
+            command("!") {
+                reply("Ciao Magaz questa è una prova!")
+            }
+        }
+    }
+
+}
+
+fun prove() {
     println("Prova")
-    val file = File("/Users/alex/Library/Application Support/JetBrains/IdeaIC2020.3/scratches/DndPg.json")
+    val file = File("/Users/alex/.dndbot/DndPg.json")
 
     val json = file.readText(Charset.defaultCharset())
+
+    file.exists()
 
     val gson = Gson()
 
@@ -26,7 +46,6 @@ fun main() {
     println(c.rollCharacteristic(CharacteristicType.STR))
 
     println(c.rollSkill(SkillType.ARCANA))
-
     println(c.rollCharacteristic(CharacteristicType.STR, true))
 
 }
