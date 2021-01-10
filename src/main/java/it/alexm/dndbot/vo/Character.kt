@@ -1,14 +1,11 @@
 package it.alexm.dndbot.vo
 
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class Character(
     val characteristics: List<Characteristic>,
     val proficiencyBonus: Int
 )
 
-@Serializable
 data class Characteristic(
     val name: String,
     val value: Int,
@@ -20,7 +17,6 @@ data class Characteristic(
     fun proficiencyType() = ProficiencyType(savingThrowProficient)
 }
 
-@Serializable
 data class ProficientSkill(
     val name: String,
     val proficient: Char? = null
