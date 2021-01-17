@@ -1,6 +1,7 @@
 package it.alexm.dndbot
 
 import com.google.gson.Gson
+import it.alexm.dndbot.logic.getPgs
 import it.alexm.dndbot.logic.rollCharacteristic
 import it.alexm.dndbot.logic.rollSkill
 import it.alexm.dndbot.vo.Character
@@ -40,9 +41,7 @@ class Test {
     @Test
     fun prova2() {
         println("Lista di file dentro .dndbot/pgs:")
-        val pgs = File("/Users/alex/.dndbot/pgs/").list { _, file ->
-            file.contains(".json")
-        }
+        val pgs = getPgs()
         pgs?.forEach(::println)
     }
 }
