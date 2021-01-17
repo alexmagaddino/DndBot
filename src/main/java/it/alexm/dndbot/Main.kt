@@ -3,6 +3,7 @@ package it.alexm.dndbot
 import com.jessecorbett.diskord.dsl.bot
 import com.jessecorbett.diskord.dsl.command
 import com.jessecorbett.diskord.dsl.commands
+import it.alexm.dndbot.logic.getPgs
 import java.io.File
 import java.nio.charset.Charset
 
@@ -14,10 +15,11 @@ suspend fun main() {
 
     bot(botKey) {
         commands("!") {
-            command("h") {
-                reply("Ciao Magaz questa è una prova!")
+            getPgs()?.forEach {
+                command(it.toLowerCase()) {
+                    reply("Ciao Magaz questa è una prova!")
+                }
             }
         }
     }
-
 }
