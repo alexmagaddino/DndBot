@@ -19,8 +19,8 @@ suspend fun main() {
     val botKey = keyFile.readText(Charset.defaultCharset())
 
     bot(botKey) {
-        commands {
-            command("!") {
+        commands("!")  {
+            command("h") {
                 reply("Ciao Magaz questa è una prova!")
             }
         }
@@ -28,7 +28,7 @@ suspend fun main() {
 
 }
 
-fun prove() {
+fun main2() {
     println("Prova")
     val file = File("/Users/alex/.dndbot/DndPg.json")
 
